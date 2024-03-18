@@ -34,7 +34,8 @@ app.get("/cars", (req, res) => {
 
         return filteredStatus;
     });
-    res.status(200).json(data);
+
+    res.status(200).json({ data, message: null });
 });
 
 app.get("/cars/:id", (req, res) => {

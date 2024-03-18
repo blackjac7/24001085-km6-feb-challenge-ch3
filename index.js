@@ -1,5 +1,6 @@
 const express = require("express");
 const route = require("./router");
+const errorHandlers = require("./middleware/errorHandlers");
 
 // Initiate express app
 const app = express();
@@ -13,6 +14,9 @@ app.use(express.static("public"));
 
 // Enable routing
 app.use("/", route);
+
+// Error handling
+app.use(errorHandlers);
 
 // Listening server on PORT
 app.listen(PORT, () => {

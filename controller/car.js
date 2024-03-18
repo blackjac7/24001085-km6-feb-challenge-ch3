@@ -1,6 +1,6 @@
 const carUsecase = require("../usecase/car");
 
-exports.getAllCars = (req, res) => {
+exports.getAllCars = (req, res, next) => {
     const { inputDate, inputCapacity } = req.query;
 
     // call the usecase
@@ -14,16 +14,17 @@ exports.getAllCars = (req, res) => {
     res.status(200).json(response);
 };
 
-exports.getCarById = (req, res) => {
+exports.getCarById = (req, res, next) => {
     const { id } = req.params;
 
     // call the usecase
     const data = carUsecase.getCarById(id);
 
     if (!data) {
-        return res
-            .status(404)
-            .json({ data: null, message: `Car with id ${id} not found` });
+        return next({
+            statusCode: 404,
+            message: `Car with id ${id} not found`,
+        });
     }
 
     const response = {
@@ -34,7 +35,7 @@ exports.getCarById = (req, res) => {
     res.status(200).json(response);
 };
 
-exports.addCar = (req, res) => {
+exports.addCar = (req, res, next) => {
     const {
         plate,
         manufacture,
@@ -53,60 +54,88 @@ exports.addCar = (req, res) => {
     } = req.body;
 
     if (!plate || plate == "") {
-        return res.status(400).json({ message: "Plate must be filled!" });
+        return next({
+            statusCode: 400,
+            message: "Plate must be filled!",
+        });
     }
     if (!manufacture || manufacture == "") {
-        return res.status(400).json({ message: "Manufacture must be filled!" });
+        return next({
+            statusCode: 400,
+            message: "Manufacture must be filled!",
+        });
     }
     if (!model || model == "") {
-        return res.status(400).json({ message: "Model must be filled!" });
+        return next({
+            statusCode: 400,
+            message: "Model must be filled!",
+        });
     }
     if (!image || image == "") {
-        return res.status(400).json({ message: "Image must be filled!" });
+        return next({
+            statusCode: 400,
+            message: "Image must be filled!",
+        });
     }
     if (!rentPerDay || rentPerDay == "" || isNaN(rentPerDay)) {
-        return res.status(400).json({
-            message: "Rent per day must be filled and must be a number!",
+        return next({
+            statusCode: 400,
+            message: "RentPerDay must be filled and must be a number!",
         });
     }
     if (!capacity || capacity == "" || isNaN(capacity)) {
-        return res
-            .status(400)
-            .json({ message: "Capacity must be filled and must be a number!" });
+        return next({
+            statusCode: 400,
+            message: "Capacity must be filled and must be a number!",
+        });
     }
     if (!description || description == "") {
-        return res.status(400).json({ message: "Description must be filled!" });
+        return next({
+            statusCode: 400,
+            message: "Description must be filled!",
+        });
     }
     if (!available || available == "" || typeof available !== "boolean") {
-        return res.status(400).json({
+        return next({
+            statusCode: 400,
             message: "Available must be filled and must be a boolean!",
         });
     }
     if (!availableAt || availableAt == "") {
-        return res.status(400).json({ message: "AvailableAt must be filled!" });
+        return next({
+            statusCode: 400,
+            message: "AvailableAt must be filled!",
+        });
     }
     if (!transmission || transmission == "") {
-        return res
-            .status(400)
-            .json({ message: "Transmission must be filled!" });
+        return next({
+            statusCode: 400,
+            message: "Transmission must be filled!",
+        });
     }
     if (!type || type == "") {
-        return res.status(400).json({ message: "Type must be filled!" });
+        return next({
+            statusCode: 400,
+            message: "Type must be filled!",
+        });
     }
     if (!year || year == "" || isNaN(year)) {
-        return res
-            .status(400)
-            .json({ message: "Year must be filled and must be a number!" });
+        return next({
+            statusCode: 400,
+            message: "Year must be filled and must be a number!",
+        });
     }
     if (!options || options == "" || !Array.isArray(options)) {
-        return res
-            .status(400)
-            .json({ message: "Options must be filled and must be an array!" });
+        return next({
+            statusCode: 400,
+            message: "Options must be filled and must be an array!",
+        });
     }
     if (!specs || specs == "" || !Array.isArray(specs)) {
-        return res
-            .status(400)
-            .json({ message: "Specs must be filled and must be an array!" });
+        return next({
+            statusCode: 400,
+            message: "Specs must be filled and must be an array!",
+        });
     }
 
     const payload = req.body;
@@ -122,7 +151,7 @@ exports.addCar = (req, res) => {
     res.status(201).json(response);
 };
 
-exports.updateCar = (req, res) => {
+exports.updateCar = (req, res, next) => {
     const id = req.params.id;
     const payload = req.body;
 
@@ -130,9 +159,10 @@ exports.updateCar = (req, res) => {
     const data = carUsecase.updateCar(id, payload);
 
     if (!data) {
-        return res
-            .status(404)
-            .json({ data: null, message: `Car with id ${id} not found` });
+        return next({
+            statusCode: 404,
+            message: `Car with id ${id} not found`,
+        });
     }
 
     const response = {
@@ -143,7 +173,7 @@ exports.updateCar = (req, res) => {
     res.status(200).json(response);
 };
 
-exports.updateCarPatch = (req, res) => {
+exports.updateCarPatch = (req, res, next) => {
     const id = req.params.id;
     const payload = req.body;
 
@@ -151,9 +181,10 @@ exports.updateCarPatch = (req, res) => {
     const data = carUsecase.updateCarPatch(id, payload);
 
     if (!data) {
-        return res
-            .status(404)
-            .json({ data: null, message: `Car with id ${id} not found` });
+        return next({
+            statusCode: 404,
+            message: `Car with id ${id} not found`,
+        });
     }
 
     const response = {
@@ -164,16 +195,17 @@ exports.updateCarPatch = (req, res) => {
     res.status(200).json(response);
 };
 
-exports.deleteCar = (req, res) => {
+exports.deleteCar = (req, res, next) => {
     const id = req.params.id;
 
     // call the usecase
     const data = carUsecase.deleteCar(id);
 
     if (!data) {
-        return res
-            .status(404)
-            .json({ data: null, message: `Car with id ${id} not found` });
+        return next({
+            statusCode: 404,
+            message: `Car with id ${id} not found`,
+        });
     }
 
     const response = {

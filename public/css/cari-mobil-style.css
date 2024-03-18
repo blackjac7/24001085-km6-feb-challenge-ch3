@@ -1,0 +1,115 @@
+@import url("https://fonts.cdnfonts.com/css/helvetica-neue-5");
+
+body {
+    font-family: "Helvetica Neue", sans-serif;
+}
+label {
+    font-size: small;
+    font-weight: 300;
+    color: #3c3c3c;
+}
+input:focus,
+select:focus {
+    border-color: #5cb85f !important;
+    box-shadow: 0 0 0 0.25rem rgba(92, 184, 95, 0.25) !important;
+}
+.navbar-position {
+    margin-top: 10px;
+}
+.menu a {
+    font-size: regular;
+    font-weight: 400;
+    color: #000000;
+}
+.menu a:active {
+    color: #5cb85f;
+}
+.custom-link {
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 700;
+    background-color: #5cb85f;
+    border-radius: 4px;
+    padding: 8px 12px 8px 12px;
+    border: 1px solid #5cb85f;
+}
+.custom-link:hover {
+    color: #5cb85f;
+    background-color: #fff;
+    border: 1px solid #5cb85f;
+}
+.custom-link:focus {
+    color: #fff;
+    background-color: #5cb85f;
+    border: 1px solid #5cb85f;
+}
+.sticky-top {
+    background-color: #f1f3ff;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.filter-box {
+    position: relative;
+    top: -70px;
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    padding: 20px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    width: 90%;
+}
+#btn-cari {
+    width: 100%;
+    background-color: #5cb85f;
+    border: 1px solid #5cb85f;
+    color: #fff;
+    font-weight: 700;
+}
+#btn-cari:hover {
+    background-color: #fff;
+    color: #5cb85f;
+    border: 1px solid #5cb85f;
+}
+.btn-pilih {
+    width: 100%;
+    background-color: #5cb85f;
+    border: 1px solid #5cb85f;
+    color: #fff;
+    font-weight: 700;
+}
+
+.card-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+.price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.footer div a {
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+}
+.swal2-confirm {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
+}
+@media (max-width: 991px) {
+    .custom-link {
+        max-width: 20%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media (max-width: 467px) {
+    .custom-link {
+        max-width: 35%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

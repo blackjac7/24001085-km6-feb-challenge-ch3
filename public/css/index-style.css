@@ -1,0 +1,89 @@
+@import url("https://fonts.cdnfonts.com/css/helvetica-neue-5");
+
+body {
+    font-family: "Helvetica Neue", sans-serif;
+}
+.navbar-position {
+    margin-top: 10px;
+}
+.menu a {
+    font-size: regular;
+    font-weight: 400;
+    color: #000000;
+}
+.menu a:active {
+    color: #5cb85f;
+}
+.custom-link {
+    color: #fff;
+    font-weight: 700;
+    background-color: #5cb85f;
+    border-radius: 4px;
+    padding: 8px 12px 8px 12px;
+    border: 1px solid #5cb85f;
+}
+.custom-link:hover {
+    color: #5cb85f;
+    background-color: #fff;
+    border: 1px solid #5cb85f;
+}
+.custom-link:focus {
+    color: #fff;
+    background-color: #5cb85f;
+    border: 1px solid #5cb85f;
+}
+.custom-btn-hero {
+    background-color: #5cb85f;
+    border: none;
+}
+.custom-btn-hero:hover {
+    background-color: #4a9d4b;
+}
+.custom-btn-get {
+    background-color: #5cb85f;
+    border: none;
+    max-width: 180px;
+}
+.custom-btn-get:hover {
+    background-color: #4a9d4b;
+}
+.sticky-top {
+    background-color: #f1f3ff;
+    border-bottom: 1px solid #e5e5e5;
+}
+.custom-carousel-icon {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+.custom-box {
+    background-color: #0d28a6;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    padding: 20px;
+    border-radius: 10px;
+}
+.footer div a {
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+}
+.interactive-card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.interactive-card:hover {
+    transform: translateY(-10px);
+}
+#why-us {
+    padding-top: 10%;
+}
+#testimonial {
+    padding-top: 10%;
+}
+@media (max-width: 991px) {
+    .custom-link {
+        width: 20%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
